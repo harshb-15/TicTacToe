@@ -5,16 +5,19 @@ import 'package:tictactoe/providers/box_data.dart';
 class TicBox extends StatelessWidget {
   final int tp, id;
   Color clr = Colors.white;
+  Image? img;
 
   TicBox(this.tp, this.id, {Key? key}) : super(key: key);
 
   void changeColor() {
     if (tp == 0) {
-      clr = Colors.red;
+      img = const Image(
+        image: AssetImage('assets/images/O2.png'),
+      );
     } else if (tp == 1) {
-      clr = Colors.yellow;
-    } else {
-      clr = Colors.black;
+      img = const Image(
+        image: AssetImage('assets/images/x2.png'),
+      );
     }
   }
 
@@ -27,10 +30,11 @@ class TicBox extends StatelessWidget {
         data.changeData(id);
       },
       child: Container(
+        color: Colors.black,
         width: 10,
         height: 10,
-        color: clr,
-        margin: EdgeInsets.all(3),
+        margin: const EdgeInsets.all(3),
+        child: img,
       ),
     );
   }
