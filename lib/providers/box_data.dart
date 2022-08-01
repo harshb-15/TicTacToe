@@ -6,6 +6,7 @@ class BoxData with ChangeNotifier {
   int turn = 1;
   bool _won = false;
   int _whoWon = -1;
+  bool _draw = false;
 
   void changeData(inx) {
     _data[inx] = turn;
@@ -55,6 +56,18 @@ class BoxData with ChangeNotifier {
       won = true;
       _whoWon = _data[2];
     }
+    bool draw = true;
+    for (int i = 0; i < 9; i++) {
+      if (_data[i] == -1) {
+        draw = false;
+        break;
+      }
+    }
+    _draw = draw;
+    if(draw==true)
+      {
+        won=true;
+      }
     return won;
   }
 
@@ -66,8 +79,14 @@ class BoxData with ChangeNotifier {
     bool idk = _won;
     return idk;
   }
-  int get whoWon{
+
+  int get whoWon {
     int idk = _whoWon;
+    return idk;
+  }
+
+  bool get draw {
+    bool idk = _draw;
     return idk;
   }
 }

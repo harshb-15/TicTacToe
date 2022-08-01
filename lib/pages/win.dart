@@ -15,7 +15,9 @@ class WinPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Text("${data.whoWon == 1 ? "Yellow" : "Red"} won"),
+          data.draw == false
+              ? Text("${data.whoWon == 1 ? "Yellow" : "Red"} won")
+              : Text("Draw, LOL"),
           ElevatedButton(
             onPressed: () {
               data.reset();
